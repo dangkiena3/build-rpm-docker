@@ -34,3 +34,6 @@
 - Email: [kiennd@appota.com](kiennd@appota.com)
 
 
+## Tham khảo
+https://github.com/summer0nguyen/package-builder-docker
+https://kipalog.com/posts/Su-dung-Docker-thiet-lap-moi-truong-tao-Package-RPM-cho-CentOS
