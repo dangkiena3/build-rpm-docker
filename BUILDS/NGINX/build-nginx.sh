@@ -63,7 +63,7 @@ rsync -avz /usr/local/nginx/conf.d/params/ usr/local/nginx/conf.d/params/
 #			    Build RPM                    #
 ##############################################
 
-fpm -s dir -t rpm -n nginx -v ${VERSION} -p nginx-VERSION.rpm --url "https://appota.com" --description "Nginx ${VERSION}" --vendor "Kiennd" -d pcre -d pcre-devel  -d zip -d unzip -d gcc -d gcc-c++ -d openssl -d openssl-devel -d zlib -d gd -d freetype -d freetype-devel -d autoconf -d openldap -d openldap-devel -d bzip2-devel -d libpng -d libpng-devel -d libjpeg -d libjpeg-devel -d perl-ExtUtils-Embed  usr etc var lib64
+fpm -s dir -t rpm -n nginx -v ${VERSION} -p nginx-VERSION.rpm --url "https://appota.com" --description "Nginx ${VERSION}" --vendor "Kiennd" -d pcre -d pcre-devel  -d zip -d unzip -d gcc -d gcc-c++ -d openssl -d openssl-devel -d zlib -d gd -d freetype -d freetype-devel -d autoconf -d openldap -d openldap-devel -d bzip2-devel -d libpng -d libpng-devel -d libjpeg -d libjpeg-devel -d perl-ExtUtils-Embed -d GeoIP -d GeoIP-devel usr etc var lib64
 
 cp nginx-${VERSION}.rpm /build/RPMS
 
