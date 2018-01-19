@@ -5,7 +5,7 @@ DOCKER_CONTAINER_STATUS=$(docker inspect -f {{.State.Running}} $DOCKER_CONTAINER
 if [ $? -gt 0 ];
 then
 	echo "Starting Container $DOCKER_CONTAINER_NAME"
-	docker run -it -v `pwd`:/build  --name rpm_builder --dns=8.8.8.8 kien/fpm-centos-7 /bin/bash
+	docker run -it -v `pwd`:/build  --name rpm_builder --dns=8.8.8.8 dangkiena3/rpm-build-docker /bin/bash
 else
 	if [ $DOCKER_CONTAINER_STATUS = "false" ];
 	then
