@@ -33,6 +33,7 @@ cd ..
 rm -rfv /tmp/builder/nginx/src
 
 cp /build/BUILDS/NGINX/SRC/nginx.init /etc/init.d/nginx
+cp /build/nginx /etc/logrotate.d/nginx
 chmod +x /etc/init.d/nginx
 #Compile DONE, you should check if Nginx is starting OK
 
@@ -47,13 +48,13 @@ mkdir -p /tmp/builder/nginx/build
 
 cd /tmp/builder/nginx/build
 
-mkdir -p usr/local/nginx usr/local/nginx/sbin var/log/nginx etc/init.d/ usr/local/lib64/perl5/auto/nginx/ /lib64/ usr/local/nginx/conf.d/nossl/ usr/local/nginx/conf.d/ssl/ usr/local/nginx/conf.d/params/ lib64 /usr/local/nginx/conf.d/nossl /usr/local/nginx/conf.d/ssl /usr/local/nginx/conf.d/params
+mkdir -p usr/local/nginx usr/local/nginx/sbin var/log/nginx etc/init.d/ usr/local/lib64/perl5/auto/nginx/ usr/local/nginx/conf.d/nossl/ usr/local/nginx/conf.d/ssl/ usr/local/nginx/conf.d/params/ lib64 etc/logrotate.d /etc/logrotate.d /lib64 /usr/local/nginx/conf.d/nossl /usr/local/nginx/conf.d/ssl /usr/local/nginx/conf.d/params
 rsync -avz /usr/local/nginx/. usr/local/nginx
 rsync -avz /usr/local/nginx/sbin/nginx usr/local/nginx/sbin/nginx
 rsync -avz /etc/init.d/nginx etc/init.d/nginx
+rsync -avz /etc/logrotate.d/nginx etc/logrotate.d/nginx
 rsync -avz /usr/local/lib64/perl5/auto/nginx/. usr/local/lib64/perl5/auto/nginx/
 rsync -avz /usr/local/lib64/perl5/nginx.pm usr/local/lib64/perl5/nginx.pm
-rsync -avz /lib64/libGeoIP.so.1 lib64/libGeoIP.so.1
 rsync -avz /usr/local/nginx/conf.d/nossl/ usr/local/nginx/conf.d/nossl/
 rsync -avz /usr/local/nginx/conf.d/ssl/ usr/local/nginx/conf.d/ssl/
 rsync -avz /usr/local/nginx/conf.d/params/ usr/local/nginx/conf.d/params/
@@ -63,7 +64,7 @@ rsync -avz /usr/local/nginx/conf.d/params/ usr/local/nginx/conf.d/params/
 #			    Build RPM                    #
 ##############################################
 
-fpm -s dir -t rpm -n nginx -v ${VERSION} -p nginx-VERSION.rpm --url "https://appota.com" --description "Nginx ${VERSION}" --vendor "Kiennd" -d pcre -d pcre-devel  -d zip -d unzip -d gcc -d gcc-c++ -d openssl -d openssl-devel -d zlib -d gd -d freetype -d freetype-devel -d autoconf -d openldap -d openldap-devel -d bzip2-devel -d libpng -d libpng-devel -d libjpeg -d libjpeg-devel -d perl-ExtUtils-Embed -d GeoIP -d GeoIP-devel usr etc var lib64
+fpm -s dir -t rpm -n nginx -v ${VERSION} -p nginx-VERSION.rpm --url "https://appota.com" --description "Nginx ${VERSION}" --vendor "Kiennd" -d pcre -d pcre-devel  -d zip -d unzip -d gcc -d gcc-c++ -d openssl -d openssl-devel -d zlib -d gd -d freetype -d freetype-devel -d autoconf -d openldap -d openldap-devel -d bzip2-devel -d libpng -d libpng-devel -d libjpeg -d libjpeg-devel -d perl-ExtUtils-Embed -d GeoIP -d GeoIP-devel usr etc var 
 
 cp nginx-${VERSION}.rpm /build/RPMS
 
