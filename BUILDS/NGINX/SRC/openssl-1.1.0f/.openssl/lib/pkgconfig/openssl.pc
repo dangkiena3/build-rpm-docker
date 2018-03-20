@@ -1,4 +1,4 @@
-prefix=/build/BUILDS/NGINX/SRC/nginx-1.12.2/../openssl-1.1.0f/.openssl
+prefix=/build/BUILDS/NGINX/SRC/nginx-1.8.0/../openssl-1.1.0f/.openssl
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
